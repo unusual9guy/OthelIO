@@ -1,47 +1,43 @@
-# CS24011 Lab 1: Reversi - Minimax with Alpha-Beta Pruning Implementation
+# OthelIO - Minimax with Alpha-Beta Pruning Implementation
 
-**Authors:** Ian Pratt-Hartmann & Francisco Lobo
-**Academic Session:** 2022-23
-**Git Tag:** 24011-lab1-S-Games
+**Core AI Logic (MoveChooser.java) by:** Vansh Goenka
+**Base Game API and Movement Logic by:** Ian Pratt-Hartmann & Francisco Lobo
 
 ## Introduction
 
-This Markdown file provides an overview of the Java program `MoveChooser.java`, designed to enhance the computer player's strategy in the game of Reversi (Othello) using the Minimax algorithm with Alpha-Beta pruning. The code builds upon the existing game logic provided in the `BoardState` class and the basic graphical user interface (GUI).
+This Markdown file provides an overview of the enhanced Reversi (Othello) game, where the core AI logic for the computer player is implemented in `MoveChooser.java` by Vansh Goenka. The base game API, including movement logic and board representation, was provided by professors Ian Pratt-Hartmann and Francisco Lobo. This enhancement focuses on improving the computer player's decision-making using the Minimax algorithm with Alpha-Beta pruning.
 
-## Key Improvements
+## Key Improvements by Vansh Goenka (MoveChooser.java)
 
-*   **Minimax Algorithm:**  The core enhancement lies in the implementation of the Minimax algorithm within the `chooseMove` function. This algorithm recursively explores the game tree, simulating potential moves for both players to determine the optimal move for the computer (white player).
-*   **Alpha-Beta Pruning:**  To optimize the search process, the code incorporates Alpha-Beta pruning. This technique eliminates unnecessary branches of the game tree by maintaining lower (alpha) and upper (beta) bounds on the possible outcomes, significantly reducing the number of positions evaluated.
-*   **Static Evaluation Function:** The code utilizes a predefined static evaluation function (`staticEval`) to assess the favorability of a given board state. This function assigns weights to individual squares based on their strategic value, considering factors like edges, corners, and mobility.
-*   **Depth-Limited Search:** The search depth for the Minimax algorithm is controlled by the `searchDepth` variable, limiting the number of moves ahead the computer considers. This allows for adjustable complexity and response time.
+*   **Minimax Algorithm:**  Implemented the Minimax algorithm to strategically explore the game tree and simulate potential moves for both players, ultimately determining the optimal move for the computer (white player).
+*   **Alpha-Beta Pruning:** Integrated Alpha-Beta pruning to optimize the Minimax search process, discarding unnecessary branches and significantly reducing the evaluation time.
+*   **Static Evaluation Function:** Developed a static evaluation function (`staticEval`) to assess the favorability of a given board state based on weighted square values, prioritizing strategic positions like edges and corners.
+*   **Depth-Limited Search:** Incorporated depth-limited search, controlled by the `searchDepth` variable, to manage the complexity of the Minimax search and balance decision-making speed with accuracy.
 
-## Code Structure
+## Provided Base Game API and Movement Logic
 
-*   **`chooseMove(BoardState boardState)`:** This function is the entry point for the computer player's move selection. It initiates the Minimax search with Alpha-Beta pruning and returns the optimal move found.
-*   **`miniMaxAB(int depth, int alpha, int beta, BoardState boardState)`:** This recursive function implements the Minimax algorithm. It explores the game tree to the specified `depth`, maximizing the score for the computer and minimizing it for the opponent.
-*   **`staticEval(BoardState boardState)`:** This function evaluates a given board state based on the weighted sum of occupied squares.
+*   **`BoardState` Class:** Professors Pratt-Hartmann and Lobo provided the `BoardState` class, which encapsulates the game's state, including the board representation, current player, and methods for making and checking legal moves.
+*   **Graphical User Interface (GUI):** A basic GUI was also provided to facilitate human-computer interaction and visualize the game board.
 
 ## Usage
 
-1.  **Compile:** Compile the modified `MoveChooser.java` along with the other project files using `javac Othello.java`.
+1.  **Compile:** Compile the modified `MoveChooser.java` (by Vansh Goenka) along with the provided game files using `javac Othello.java`.
 2.  **Run:** Execute the program with `java Othello`.
-3.  **Play:** The human player (black) can interact with the GUI to make moves, and the computer (white) will use the enhanced `MoveChooser` to determine its responses.
+3.  **Play:** The human player (black) interacts with the GUI, while the computer (white), powered by the enhanced AI in `MoveChooser.java`, makes its moves.
 
-## Key Functionalities
+## Key Functionalities (MoveChooser.java by Vansh Goenka)
 
-*   **`miniMaxAB` Implementation:** The `miniMaxAB` function effectively implements the Minimax algorithm with Alpha-Beta pruning to evaluate and select optimal moves for the computer player.
-*   **Static Evaluation:** The `staticEval` function provides a reasonable estimation of board positions' value based on weighted square values.
+*   **`chooseMove`:** The main entry point for the computer's decision-making, initiating the Minimax search with Alpha-Beta pruning.
+*   **`miniMaxAB`:** The core implementation of the Minimax algorithm with Alpha-Beta pruning, recursively evaluating game states and maximizing the computer's potential score.
+*   **`staticEval`:** The static evaluation function that assesses the strategic value of a given board state using weighted square values.
 
-## Additional Notes
+## Acknowledgements
 
-*   The code includes error handling to account for cases where no legal moves are available, ensuring smooth gameplay.
-*   The `valueOfSquare` array stores the predefined weights for each square, contributing to the static evaluation function.
-*   The provided code appears to be well-structured and readable, facilitating understanding and potential modifications.
+*   This project builds upon the base game API and movement logic provided by professors Ian Pratt-Hartmann and Francisco Lobo.
+*   The core AI logic in `MoveChooser.java` is the work of Vansh Goenka.
 
 ## Potential Improvements
 
-*   **Enhanced Static Evaluation:** The static evaluation function could be further refined to consider additional factors like piece stability, potential for future moves, and control of key areas.
-*   **Iterative Deepening:** Implementing iterative deepening would allow the search depth to be dynamically adjusted based on available time, potentially leading to better move choices in time-constrained situations.
-*   **Opening/Ending Book:** Incorporating an opening book or endgame tablebase could significantly improve the computer's performance in the early and late stages of the game.
-
-Feel free to explore and experiment with these potential enhancements to further improve the Reversi AI's capabilities.
+*   **Enhanced Static Evaluation:** Explore more sophisticated evaluation heuristics considering factors like mobility, stability, and control of key areas.
+*   **Iterative Deepening:** Implement iterative deepening to dynamically adjust the search depth based on available time, potentially leading to stronger moves in time-constrained situations.
+*   **Opening/Ending Book:** Incorporate an opening book or endgame tablebase to enhance the computer's play in the early and late stages of the game.
